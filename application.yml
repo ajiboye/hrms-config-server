@@ -1,0 +1,33 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    open-in-view: true
+    hibernate:
+      ddlAuto: update
+    showSql: true
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1522/ORCLCDB.localdomain
+    username: dbUser
+    password: dbPassword
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      connection-timeout: 40000
+      minimum-idle: 5
+      maximum-pool-size: 50
+      idle-timeout: 300000
+
+prop:
+  encryptionKey: "service-key"
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:9191/eureka/
+  instance:
+    hostname: localhost
